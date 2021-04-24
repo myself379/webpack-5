@@ -7,10 +7,11 @@ module.exports = {
     main: './src/index.js',
   },
   output: {
-    filename: '[chunkhash].bundle.js',
+    filename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
+  devtool: 'inline-source-map',
   module: {
     rules: [
       {
@@ -36,6 +37,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      favicon: './src/favicons.svg',
       template: 'index.html',
     }),
     new webpack.ProvidePlugin({

@@ -1,4 +1,4 @@
-import './bootstrap-init.scss';
+import './tailwind-init.css';
 
 console.log('Hello World!');
 

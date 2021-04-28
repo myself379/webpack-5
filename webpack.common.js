@@ -20,7 +20,17 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          },
+          'postcss-loader',
+        ],
       },
       {
         test: /\.s[ac]ss$/i,
@@ -38,7 +48,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       favicon: './src/favicons.svg',
-      template: 'index.html',
+      template: './src/index.html',
     }),
     new webpack.ProvidePlugin({
       $: ('jquery'),
